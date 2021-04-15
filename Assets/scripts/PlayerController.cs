@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
         {
             return;
         }
-        if (Input.GetMouseButtonDown(0) && jumpCount < 2)
+        if (Input.GetMouseButtonDown(0) && jumpCount < 200)
         {
             jumpCount++;
             playerRigidbody.velocity = Vector2.zero;
@@ -55,6 +55,8 @@ public class PlayerController : MonoBehaviour
         playerAudio.Play();
         playerRigidbody.velocity = Vector2.zero;
         isDead = true;
+
+        GameManager.instance.OnPlayerDead();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
